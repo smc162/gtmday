@@ -1,3 +1,35 @@
+## GTM Day Site
+
+Three-page Next.js experience inspired by the GTM Day Toronto card aesthetic.
+
+- **Randomizer**: `/random` draws a number from 1–12 in glowing black-and-yellow balls.
+- **Timer**: `/timer` runs a large focus timer (default 40 minutes) with start / pause / reset.
+- **Social Feed**: `/feed` embeds an external site and slowly scrolls it for ambient viewing.
+
+### Running locally
+
+```bash
+npm install
+npm run dev
+```
+
+Then open `http://localhost:3000` in your browser.
+
+### Railway deployment
+
+Use these commands in your Railway service configuration:
+
+- **Build command**: `npm run build`
+- **Start command**: `npm start`
+
+The app binds to port `3000` by default; Railway will provide the `PORT` environment variable automatically.
+
+To point the social feed page at your own source, set:
+
+```bash
+NEXT_PUBLIC_FEED_URL="https://your-feed-url.example.com"
+```
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
