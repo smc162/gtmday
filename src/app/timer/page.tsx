@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function toSeconds(m: number, s: number) {
   return m * 60 + s;
@@ -20,6 +20,25 @@ export default function TimerPage() {
     toSeconds(defaultMinutes, defaultSeconds),
   );
   const [isRunning, setIsRunning] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const fullscreenRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = fullscreenRef.current;
+    if (!el) return;
+    const onChange = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", onChange);
+    return () => document.removeEventListener("fullscreenchange", onChange);
+  }, []);
+
+  const toggleFullscreen = async () => {
+    if (!fullscreenRef.current) return;
+    if (document.fullscreenElement) {
+      await document.exitFullscreen();
+    } else {
+      await fullscreenRef.current.requestFullscreen();
+    }
+  };
 
   useEffect(() => {
     if (!isRunning || remaining <= 0) return;
@@ -58,8 +77,20 @@ export default function TimerPage() {
   };
 
   return (
-    <div className="page-shell timer-page">
-      <div className="timer-device">
+    <div className="page-shell">
+      <div
+        ref={fullscreenRef}
+        className="timer-fullscreen-wrap timer-page"
+      >
+        <button
+          type="button"
+          className="fullscreen-button"
+          onClick={toggleFullscreen}
+          aria-label={isFullscreen ? "Exit fullscreen" : "View fullscreen"}
+        >
+          {isFullscreen ? "Exit fullscreen" : "View fullscreen"}
+        </button>
+        <div className="timer-device">
         <div className="timer-screen">
           <div className="timer-digits">
             <span className="timer-part">
@@ -106,6 +137,7 @@ export default function TimerPage() {
           >
             {isRunning ? "STOP" : "START"}
           </button>
+        </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 "use client";
 
-const FEED_URL =
-  process.env.NEXT_PUBLIC_FEED_URL ?? "https://news.ycombinator.com/";
+const FEED_URL = "https://www.linkedin.com/company/akatos/";
 
 export default function FeedPage() {
   return (
@@ -11,9 +10,16 @@ export default function FeedPage() {
 
       <section className="card feed-card">
         <p className="muted">
-          This frame slowly drifts through the embedded page. Update{" "}
-          <code>NEXT_PUBLIC_FEED_URL</code> to point it at the feed you want
-          visible during GTM Day.
+          This frame slowly drifts through the embedded page, currently pointed
+          at the{" "}
+          <a
+            href={FEED_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Akatos LinkedIn page
+          </a>
+          .
         </p>
         <div className="feed-window">
           <div className="feed-inner">
