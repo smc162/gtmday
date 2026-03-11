@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const BALL_COUNT = 12;
 const FLOATING_BALLS = 12;
-const FLOATING_SIZE = 72;
+const FLOATING_SIZE = 96;
 
 function getNextPreview(previous: number | null): number {
   const base = Math.floor(Math.random() * BALL_COUNT) + 1;
@@ -120,7 +120,7 @@ export default function RandomPage() {
 
   useEffect(() => {
     if (bouncingIds.size === 0) return;
-    const t = window.setTimeout(() => setBouncingIds(new Set()), 200);
+    const t = window.setTimeout(() => setBouncingIds(new Set()), 400);
     return () => window.clearTimeout(t);
   }, [bouncingIds]);
 
