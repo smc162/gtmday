@@ -206,7 +206,9 @@ export default function RandomPage() {
             </div>
           )}
           <div className="random-field" ref={fieldRef}>
-            {floating.map((ball) => (
+            {floating
+              .filter((ball) => !drawn.includes(ball.id))
+              .map((ball) => (
               <div
                 key={ball.id}
                 className={`random-floating-ball${
