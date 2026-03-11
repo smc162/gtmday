@@ -33,12 +33,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${serif.variable} ${sans.variable} ${orbitron.variable}`}>
         <div className="frame">
-          <header className="site-header">
-            <div className="site-title">
-              <span className="site-title-main">GTM Day</span>
-              <span className="site-title-sub">Tools</span>
-            </div>
-          </header>
           <main className="site-main">{children}</main>
           <nav className="bottom-menu">
             <Link href="/" className="bottom-menu-link">
