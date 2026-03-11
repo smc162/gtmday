@@ -21,7 +21,7 @@ const orbitron = Orbitron({
 
 export const metadata: Metadata = {
   title: "GTM Day",
-  description: "GTM Day tools: randomizer, timer, and social feed.",
+  description: "GTM Day tools: randomizer and timer.",
 };
 
 export default function RootLayout({
@@ -35,17 +35,11 @@ export default function RootLayout({
         <div className="frame">
           <main className="site-main">{children}</main>
           <nav className="bottom-menu">
-            <Link href="/" className="bottom-menu-link">
-              Home
-            </Link>
             <Link href="/random" className="bottom-menu-link">
               Numbers
             </Link>
             <Link href="/timer" className="bottom-menu-link">
               Timer
-            </Link>
-            <Link href="/feed" className="bottom-menu-link">
-              Feed
             </Link>
           </nav>
         </div>

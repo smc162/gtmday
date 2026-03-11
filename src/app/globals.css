@@ -609,47 +609,6 @@ a {
   transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(1.08);
 }
 
-.feed-card {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.feed-window {
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid rgba(243, 211, 74, 0.4);
-  height: min(540px, 70vh);
-  background-color: #000;
-}
-
-.feed-inner {
-  width: 100%;
-  height: 120%;
-  animation: feedDrift 90s linear infinite;
-}
-
-.feed-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-@keyframes feedDrift {
-  0% {
-    transform: translateY(0);
-  }
-  80% {
-    transform: translateY(-12%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-/* legacy ball-grid styles removed */
-
 @media (max-width: 720px) {
   .frame {
     padding: 10px;
